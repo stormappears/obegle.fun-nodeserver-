@@ -3,7 +3,7 @@ const app = express();
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const { v4: uuidV4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 
 //cors
@@ -59,13 +59,13 @@ function addToChatQueue(user) {
     const user1 = chatQueue.shift();
     const user2 = chatQueue.shift();
     //uiid
-     const newUUID = uuidV4();
+     let uiid = uuidv4();
 
     // Match user1 and user2
     console.log(`Matching ${user1} with ${user2}`);
     // HandleUserRoom(user1 , user2);
-    io.to(user1).emit("sendUserRoom", newUUID);
-    io.to(user2).emit("sendUserRoom", newUUID);
+    io.to(user1).emit("sendUserRoom", uiid);
+    io.to(user2).emit("sendUserRoom", uiid);
   }
 }
 
