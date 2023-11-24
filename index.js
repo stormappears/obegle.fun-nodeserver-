@@ -3,7 +3,7 @@ const app = express();
 const http = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const uuidv1 = require('uuid');
+const { v4: uuidV4 } = require('uuid');
 
 
 //cors
@@ -59,7 +59,7 @@ function addToChatQueue(user) {
     const user1 = chatQueue.shift();
     const user2 = chatQueue.shift();
     //uiid
-     const newUUID = uuidv1.v4();
+     const newUUID = uuidV4();
 
     // Match user1 and user2
     console.log(`Matching ${user1} with ${user2}`);
